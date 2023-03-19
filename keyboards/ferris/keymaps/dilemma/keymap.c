@@ -15,13 +15,6 @@ enum keymap_layers {
 #define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
 #define _L_PTR(KC) LT(LAYER_POINTER, KC)
 
-#ifndef POINTING_DEVICE_ENABLE
-#    define DRGSCRL KC_NO
-#    define DPI_MOD KC_NO
-#    define S_D_MOD KC_NO
-#    define SNIPING KC_NO
-#endif // !POINTING_DEVICE_ENABLE
-
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
@@ -62,9 +55,9 @@ enum keymap_layers {
 
 /** \brief Mouse emulation and pointer functions. */
 #define LAYOUT_LAYER_POINTER                                                                  \
-    QK_BOOT,  EE_CLR, XXXXXXX, DPI_MOD, S_D_MOD, S_D_MOD, DPI_MOD, XXXXXXX,  EE_CLR, QK_BOOT, \
-    ______________HOME_ROW_GACS_L______________, ______________HOME_ROW_GACS_R______________, \
-    _______, DRGSCRL, SNIPING, KC_BTN3, XXXXXXX, XXXXXXX, KC_BTN3, SNIPING, DRGSCRL, _______, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1, KC_WH_U, KC_BTN2, XXXXXXX, \
+    ______________HOME_ROW_GACS_L______________, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, \
+    _______, XXXXXXX, XXXXXXX, KC_BTN3, XXXXXXX, XXXXXXX, KC_BTN3, KC_WH_D, XXXXXXX, _______, \
                                KC_BTN2, KC_BTN1, KC_BTN1, KC_BTN2
 
 /**
@@ -128,12 +121,35 @@ enum keymap_layers {
       __VA_ARGS__
 #define HOME_ROW_MOD_GACS(...) _HOME_ROW_MOD_GACS(__VA_ARGS__)
 
+/**
+ * \brief Add pointer layer keys to a layout.
+ *
+ * Expects a 10-key per row layout.  The layout passed in parameter must contain
+ * at least 30 keycodes.
+ *
+ * This is meant to be used with `LAYER_ALPHAS_QWERTY` defined above, eg.:
+ *
+ *     POINTER_MOD(LAYER_ALPHAS_QWERTY)
+ */
+#define _POINTER_MOD(                                                  \
+    L00, L01, L02, L03, L04, R05, R06, R07, R08, R09,                  \
+    L10, L11, L12, L13, L14, R15, R16, R17, R18, R19,                  \
+    L20, L21, L22, L23, L24, R25, R26, R27, R28, R29,                  \
+    ...)                                                               \
+             L00,         L01,         L02,         L03,         L04,  \
+             R05,         R06,         R07,         R08,         R09,  \
+             L10,         L11,         L12,         L13,         L14,  \
+             R15,         R16,         R17,         R18,         R19,  \
+      _L_PTR(L20),        L21,         L22,         L23,         L24,  \
+             R25,         R26,         R27,         R28,  _L_PTR(R29), \
+      __VA_ARGS__
+#define POINTER_MOD(...) _POINTER_MOD(__VA_ARGS__)
 
 #define LAYOUT_wrapper(...) LAYOUT_split_3x5_2(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
-    HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE)
+    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
   ),
   [LAYER_FUNCTION] = LAYOUT_wrapper(LAYOUT_LAYER_FUNCTION),
   [LAYER_NAVIGATION] = LAYOUT_wrapper(LAYOUT_LAYER_NAVIGATION),
