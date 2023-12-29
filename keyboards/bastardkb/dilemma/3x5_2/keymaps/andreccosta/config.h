@@ -21,17 +21,8 @@
 #    define DYNAMIC_KEYMAP_LAYER_COUNT 6
 #endif // VIA_ENABLE
 
-/**
- * \brief Prevent normal rollover on alphas from accidentally triggering mods.
- *
- * Ignores key presses that interrupt a mod-tap.  Must-have for Home Row mod.
- *
- * Without `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
- *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ Mod+e
- * With `IGNORE_MOD_TAP_INTERRUPT`, within `TAPPING_TERM`:
- *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ ae
- */
-#define IGNORE_MOD_TAP_INTERRUPT
+/* Auto pointer layer */
+#define DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 /* Charybdis-specific features. */
 

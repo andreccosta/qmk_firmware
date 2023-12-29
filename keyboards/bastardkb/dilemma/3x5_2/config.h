@@ -1,5 +1,4 @@
-/*
- * Copyright 2021 Quentin LEBASTARD <qlebastard@gmail.com>
+/**
  * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,24 +17,21 @@
 
 #pragma once
 
-/* Pointing device configuration. */
+/* Handedness. */
+#define SPLIT_HAND_PIN GP29
+#define SPLIT_HAND_PIN_LOW_IS_LEFT // High -> right, Low -> left.
 
-// Enable use of pointing device on slave split.
-#define SPLIT_POINTING_ENABLE
+/* CRC. */
+#define CRC8_USE_TABLE
+#define CRC8_OPTIMIZE_SPEED
 
-// Pointing device is on the right split.
-#define POINTING_DEVICE_RIGHT
+/* Cirque trackpad over SPI. */
+#define SPI_SCK_PIN GP22
+#define SPI_MOSI_PIN GP23
+#define SPI_MISO_PIN GP20
+#define POINTING_DEVICE_CS_PIN GP21
 
-// Enables support for extended i16 mouse reports (instead of i8).
-#define MOUSE_EXTENDED_REPORT
-
-// Limits the frequency that the sensor is polled for motion.
-#define POINTING_DEVICE_TASK_THROTTLE_MS 10
-
-// Adjust trackpad rotation.
-#define POINTING_DEVICE_ROTATION_90
-
-// Configure for the Cirque model used on the Dilemma.
-#define CIRQUE_PINNACLE_DIAMETER_MM 35
-#define CIRQUE_PINNACLE_CURVED_OVERLAY
-#define POINTING_DEVICE_GESTURES_SCROLL_ENABLE // Circular scroll.
+/* Reset. */
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U
