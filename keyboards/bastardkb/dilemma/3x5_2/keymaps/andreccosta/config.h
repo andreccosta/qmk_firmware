@@ -22,7 +22,13 @@
 #endif // VIA_ENABLE
 
 /* Auto pointer layer */
-#define DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+// #define DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+
+/* Tap to click */
+#define CIRQUE_PINNACLE_TAP_ENABLE
+
+/* Override default min DPI */
+#define DILEMMA_MINIMUM_DEFAULT_DPI 200
 
 /* Charybdis-specific features. */
 
