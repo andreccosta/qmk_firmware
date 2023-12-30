@@ -1,34 +1,8 @@
 {
-    "keyboard_name": "Dilemma (3x5+2) Assembled",
     "usb": {
         "device_version": "1.0.0",
         "pid": "0x1835"
     },
-    "matrix_pins": {
-        "cols": ["GP8", "GP9", "GP7", "GP6", "GP28"],
-        "rows": ["GP4", "GP5", "GP27", "GP26"]
-    },
-    "diode_direction": "ROW2COL",
-    "split": {
-        "enabled": true,
-        "soft_serial_pin": "GP1",
-        "bootmagic": {
-            "matrix": [4, 0]
-        }
-    },
-    "features": {
-        "bootmagic": true,
-        "command": false,
-        "console": false,
-        "extrakey": true,
-        "mousekey": true,
-        "nkro": true,
-        "rgb_matrix": false,
-        "caps_word": true,
-        "tri_layer": true
-    },
-    "processor": "RP2040",
-    "bootloader": "rp2040",
     "community_layouts": ["split_3x5_2"],
     "layouts": {
         "LAYOUT_split_3x5_2": {
