@@ -4,6 +4,12 @@ The Dilemma `via` keymap is based on a QWERTY layout with [home row mods](https:
 
 This layout also supports VIA.
 
+## Flashing
+
+```sh
+qmk flash -kb bastardkb/dilemma/3x5_2/assembled -km andreccosta
+```
+
 ## Customizing the keymap
 
 ### Dynamic DPI scaling
